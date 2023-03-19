@@ -5,24 +5,25 @@ import Login from "../pages/login/Login";
 import NotFound from "../pages/not-found/NotFound";
 
 const Layout = () => {
-  // localStorage.clear();
+  const isLogin = Boolean(localStorage.getItem("account"));
+
   return (
     <BrowserRouter>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            !!localStorage.getItem("account")?.status ? (
-              <Navigate to="/home" />
-            ) : (
-              <Navigate to="/login" />
-            )
-          }
-        />
-        <Route path="/login" element={<Login />}></Route>
-        <Route path="/home" element={<Home />} />
-        <Route path="/*" element={<NotFound />}></Route>
-      </Routes>
+      {isLogin ? (
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/login" element={<Navigate to="/home" />}></Route>
+          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      ) : (
+        <Routes>
+          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/home" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      )}
     </BrowserRouter>
   );
 };

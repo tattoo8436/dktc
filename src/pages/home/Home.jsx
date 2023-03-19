@@ -16,11 +16,13 @@ import { v4 as uuidv4 } from "uuid";
 import { Controller, useForm } from "react-hook-form";
 import _ from "lodash";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const gridRef1 = useRef();
   const gridRef2 = useRef();
   //let listIds = useRef([]);
+  const navigate = useNavigate();
 
   const [account, setAccount] = useState(null);
   const [subject, setSubject] = useState(1);
@@ -182,7 +184,9 @@ const Home = () => {
   const menuElement = () => {
     return (
       <div className="right__menu">
-        <Button type="text">Đăng xuất</Button>
+        <Button type="text" onClick={handleLogout}>
+          Đăng xuất
+        </Button>
       </div>
     );
   };
@@ -208,6 +212,12 @@ const Home = () => {
     });
     setTotalSTC((pre) => pre - row.data.subject.stc);
     setOpenModalDelete(false);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("account");
+    navigate("/login");
+    window.location.reload();
   };
 
   console.log("account:", account);

@@ -48,12 +48,11 @@ const Login = () => {
         password: value.password,
       });
       console.log(data);
-      setTimeout(() => {
-        toast.success("Đăng nhập thành công!", { autoClose: 3000 });
-        localStorage.setItem("account", JSON.stringify(data));
-        navigate("/home");
-        setLoading(false);
-      }, 100);
+      localStorage.setItem("account", JSON.stringify(data));
+      navigate("/home");
+      setLoading(false);
+      window.location.reload();
+      //toast.success("Đăng nhập thành công!", { autoClose: 3000 });
       toast.dismiss();
     } catch (error) {
       toast.error("Tài khoản hoặc mật khẩu không chính xác!", {
