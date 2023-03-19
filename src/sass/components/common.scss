@@ -1,0 +1,23 @@
+.is-invalid{
+    border-color: red !important;
+
+    &:hover{
+        border-color: red !important;
+    }
+
+    &:focus{
+        border-color: red !important;
+        box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.32) !important;
+    }
+}
+
+.ant-input-affix-wrapper-focused.is-invalid{
+    box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.32) !important;
+}
+
+.ant-modal-content{
+
+    .ant-modal-body{
+        min-height: 150px;
+    }
+}
