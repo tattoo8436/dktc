@@ -1,12 +1,8 @@
 package com.example.demoapi2.service;
 
-import com.example.demoapi2.dto.AccountDTO;
 import com.example.demoapi2.dto.LayerClassDTO;
-import com.example.demoapi2.dto.LayerClassRequestDTO;
 import com.example.demoapi2.dto.LayerClassResponseDTO;
-import com.example.demoapi2.model.Account;
 import com.example.demoapi2.model.LayerClass;
-import com.example.demoapi2.repository.AccountRepository;
 import com.example.demoapi2.repository.LayerClassRepository;
 import com.example.demoapi2.utils.ConvertUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,5 +24,25 @@ public class LayerClassServiceImp implements iLayerClassService{
         LayerClassResponseDTO layerClass = new LayerClassResponseDTO();
         layerClass.setListLayerClasses(listLayerClasses);
         return layerClass;
+    }
+
+    @Override
+    public LayerClassResponseDTO getLayerClassByAccount(long accountId) {
+        List<LayerClass> old = layerClassRepository.getByAccount(accountId);
+        System.out.println(old);
+        List<LayerClassDTO> listLayerClasses = ConvertUtils.convertList(old, LayerClassDTO.class);
+        LayerClassResponseDTO layerClass = new LayerClassResponseDTO();
+        layerClass.setListLayerClasses(listLayerClasses);
+        return layerClass;
+    }
+
+    @Override
+    public void deleteLayerClassesByAccount(long accountId) {
+        layerClassRepository.deleteByAccount(accountId);
+    }
+
+    @Override
+    public void updateById(long id, long accountId) {
+        layerClassRepository.updateById(id, accountId);
     }
 }

@@ -18,5 +18,6 @@ public class LayerClassRequestDTO {
     private String password;
 
     private long subjectId;
+    private List<Long> listLayerClassIds;
 
 }

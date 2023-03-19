@@ -22,5 +22,6 @@ public class LayerClassDTO {
     private int lessonNumber;
     private String room;
     private SubjectDTO subject;
+    private long accountId;
 
 }

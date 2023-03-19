@@ -1,6 +1,5 @@
 package com.example.demoapi2.dto;
 
-import com.example.demoapi2.model.LayerClass;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +10,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AccountDTO {
+public class AccountResponseDTO {
     private long id;
 
     private String username;
@@ -19,8 +18,6 @@ public class AccountDTO {
     private String password;
 
     private String name;
-
-    private List<LayerClassDTO> listLayerClasses;
 
     private List<AccountSubjectDTO> listAccountSubjects;
 }
