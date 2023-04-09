@@ -43,10 +43,13 @@ const Login = () => {
     setLoading(true);
     //console.log(value);
     try {
-      const { data } = await axiosClient.post("http://localhost:8080/login", {
-        username: value.username,
-        password: value.password,
-      });
+      const { data } = await axiosClient.post(
+        "http://26.192.253.140:8080/login",
+        {
+          username: value.username,
+          password: value.password,
+        }
+      );
       console.log(data);
       localStorage.setItem("account", JSON.stringify(data));
       navigate("/home");

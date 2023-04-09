@@ -115,7 +115,7 @@ const Home = () => {
       };
       console.log(payload);
       const { data } = await axiosClient.post(
-        "http://localhost:8080/layer-class/search-by-subjectId",
+        "http://26.192.253.140:8080/layer-class/search-by-subjectId",
         payload
       );
       console.log(data);
@@ -137,7 +137,7 @@ const Home = () => {
       };
       console.log(payload);
       const { data } = await axiosClient.post(
-        "http://localhost:8080/layer-class/search-by-accountId",
+        "http://26.192.253.140:8080/layer-class/search-by-accountId",
         payload
       );
       console.log(data);
@@ -165,7 +165,7 @@ const Home = () => {
         };
         console.log(payload);
         const { data } = await axiosClient.post(
-          "http://localhost:8080/layer-class/save",
+          "http://26.192.253.140:8080/layer-class/save",
           payload
         );
         setIsRefetch((pre) => !pre);
