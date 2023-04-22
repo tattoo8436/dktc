@@ -43,6 +43,15 @@ public class LayerClassServiceImp implements iLayerClassService{
 
     @Override
     public void updateById(long id, long accountId) {
-        layerClassRepository.updateById(id, accountId);
+        LayerClass layerClass = layerClassRepository.findById(id).get();
+        //System.out.println("quantity: " + layerClass.getRemainQuantity());
+        if(layerClass.getRemainQuantity() == 1){
+            layerClassRepository.updateById(id, accountId);
+        }
+    }
+
+    @Override
+    public LayerClass getLayerClassById(long id) {
+        return layerClassRepository.findById(id).get();
     }
 }
