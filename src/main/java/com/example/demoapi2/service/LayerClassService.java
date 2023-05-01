@@ -11,12 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class LayerClassServiceImp implements iLayerClassService{
+public class LayerClassService {
     @Autowired
     private LayerClassRepository layerClassRepository;
 
 
-    @Override
     public LayerClassResponseDTO getLayerClassBySubject(long subjectId) {
         List<LayerClass> old = layerClassRepository.getBySubject(subjectId);
         System.out.println(old);
@@ -26,7 +25,6 @@ public class LayerClassServiceImp implements iLayerClassService{
         return layerClass;
     }
 
-    @Override
     public LayerClassResponseDTO getLayerClassByAccount(long accountId) {
         List<LayerClass> old = layerClassRepository.getByAccount(accountId);
         System.out.println(old);
@@ -36,21 +34,20 @@ public class LayerClassServiceImp implements iLayerClassService{
         return layerClass;
     }
 
-    @Override
     public void deleteLayerClassesByAccount(long accountId) {
         layerClassRepository.deleteByAccount(accountId);
     }
 
-    @Override
     public void updateById(long id, long accountId) {
         LayerClass layerClass = layerClassRepository.findById(id).get();
         //System.out.println("quantity: " + layerClass.getRemainQuantity());
-        if(layerClass.getRemainQuantity() == 1){
+        if (layerClass.getRemainQuantity() == 1) {
+            layerClassRepository.updateById(id, accountId);
+        } else if(layerClass.getRemainQuantity() == 0 && layerClass.getAccount().getId() == accountId){
             layerClassRepository.updateById(id, accountId);
         }
     }
 
-    @Override
     public LayerClass getLayerClassById(long id) {
         return layerClassRepository.findById(id).get();
     }

@@ -25,23 +25,23 @@ public class LayerClass {
     private Account account;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     @Column(name = "groupCode")
     private String groupCode;
     @Column(name = "classCode")
     private String classCode;
     @Column(name = "quantity")
-    private int quantity;
+    private Integer quantity;
     @Column(name = "remainQuantity")
-    private int remainQuantity;
+    private Integer remainQuantity;
     @Column(name = "weekdayName")
     private String weekdayName;
     @Column(name = "weekdayValue")
-    private int weekdayValue;
+    private Integer weekdayValue;
     @Column(name = "lessonStart")
-    private int lessonStart;
+    private Integer lessonStart;
     @Column(name = "lessonNumber")
-    private int lessonNumber;
+    private Integer lessonNumber;
     @Column(name = "room")
     private String room;
 

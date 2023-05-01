@@ -11,6 +11,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountSubjectDTO {
-    private long id;
+    private Long id;
     private SubjectDTO subject;
 }

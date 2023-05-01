@@ -11,7 +11,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class AccountResponseDTO {
-    private long id;
+    private Long id;
 
     private String username;
 

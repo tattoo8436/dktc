@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SubjectDTO {
-    private long id;
+    private Long id;
     private String code;
     private String name;
-    private int stc;
+    private Integer stc;
 }

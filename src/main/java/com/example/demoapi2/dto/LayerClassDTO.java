@@ -11,17 +11,17 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LayerClassDTO {
-    private long id;
+    private Long id;
     private String groupCode;
     private String classCode;
-    private int quantity;
-    private int remainQuantity;
+    private Integer quantity;
+    private Integer remainQuantity;
     private String weekdayName;
-    private int weekdayValue;
-    private int lessonStart;
-    private int lessonNumber;
+    private Integer weekdayValue;
+    private Integer lessonStart;
+    private Integer lessonNumber;
     private String room;
     private SubjectDTO subject;
-    private long accountId;
+    private Long accountId;
 
 }

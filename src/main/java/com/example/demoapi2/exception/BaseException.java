@@ -1,9 +1,5 @@
 package com.example.demoapi2.exception;
 
-
-import lombok.Getter;
-
-@Getter
 public class BaseException extends RuntimeException {
     private static final long serialVersionUID = 2714470317189257851L;
 
@@ -14,5 +10,13 @@ public class BaseException extends RuntimeException {
         super(error, cause);
         this.error = error;
         this.data = data;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public Object getData() {
+        return data;
     }
 }

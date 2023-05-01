@@ -24,5 +24,5 @@ public class AccountSubject {
     private Subject subject;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 }
