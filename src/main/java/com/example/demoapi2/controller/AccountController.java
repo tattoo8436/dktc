@@ -10,7 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @Getter
-@Setter
 @RestController
 public class AccountController {
     @Autowired

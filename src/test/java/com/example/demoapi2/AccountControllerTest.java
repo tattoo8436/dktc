@@ -32,4 +32,19 @@ public class AccountControllerTest {
         AccountLoginDTO accountLogin = new AccountLoginDTO("test", "testtt");
         AccountResponseDTO result = accountController.loginByAccount(accountLogin);
     }
+    @Test(expected = ApiInputException.class)
+    public void testLoginByAccountNullUsername() {
+        AccountLoginDTO accountLogin = new AccountLoginDTO(null, "test");
+        AccountResponseDTO result = accountController.loginByAccount(accountLogin);
+    }
+    @Test(expected = ApiInputException.class)
+    public void testLoginByAccountNullPassword() {
+        AccountLoginDTO accountLogin = new AccountLoginDTO("test", null);
+        AccountResponseDTO result = accountController.loginByAccount(accountLogin);
+    }
+    @Test(expected = ApiInputException.class)
+    public void testLoginByAccountNullUsernameAndPassword() {
+        AccountLoginDTO accountLogin = new AccountLoginDTO(null, null);
+        AccountResponseDTO result = accountController.loginByAccount(accountLogin);
+    }
 }

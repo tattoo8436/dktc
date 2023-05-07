@@ -23,9 +23,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
-public class LayerClassControllerTest{
+public class LayerClassControllerTest {
     @Autowired
     private LayerClassController layerClassController;
+
+    @Test(expected = ApiInputException.class)
+    public void testGetLayerClassBySubjectWithoutPermission() {
+        LayerClassRequestDTO layerClassRequest = new LayerClassRequestDTO(null, null, 1L, null);
+        layerClassController.searchLayerClassBySubject(layerClassRequest);
+    }
 
     @Test
     public void testGetLayerClassBySubjectSuccess() {
@@ -34,12 +40,25 @@ public class LayerClassControllerTest{
         Assert.assertNotNull(result);
     }
 
+    @Test(expected = ApiInputException.class)
+    public void testGetLayerClassByAccountWithoutPermission() {
+        AccountLoginDTO accountLogin = new AccountLoginDTO(null, null);
+        layerClassController.searchLayerClassByAccount(accountLogin);
+    }
+
     @Test
     public void testGetLayerClassByAccountSuccess() {
         AccountLoginDTO accountLogin = new AccountLoginDTO("test", "test");
         LayerClassResponseDTO result = layerClassController.searchLayerClassByAccount(accountLogin);
         //System.out.println(result.getListLayerClasses().size());
         Assert.assertNotNull(result);
+    }
+
+    @Test(expected = ApiInputException.class)
+    public void testSaveLayerClassWithoutPermission() {
+        List<Long> arr = Arrays.asList(44L, 45L, 46L, 47L);
+        LayerClassRequestDTO layerClassRequest = new LayerClassRequestDTO(null, null, null, arr);
+        layerClassController.saveLayerClassesByAccount(layerClassRequest);
     }
 
     @Test
@@ -65,7 +84,7 @@ public class LayerClassControllerTest{
     }
 
     @Test
-    public void testSaveLayerClassAlreadySelected() throws InterruptedException {
+    public void testSaveLayerClassAlreadySelected() {
         List<Long> arr = Arrays.asList(44L, 45L, 46L);
         LayerClassRequestDTO layerClassRequest = new LayerClassRequestDTO("test2", "test2", null, arr);
         AccountLoginDTO accountLogin = new AccountLoginDTO(layerClassRequest.getUsername(), layerClassRequest.getPassword());

@@ -17,7 +17,6 @@ public class LayerClassController {
     private LayerClassService layerClassService;
     @Autowired
     private AccountService accountService;
-    private MessageSource messageSource;
 
     private boolean checkAccount(AccountLoginDTO accountLogin) {
         if (accountLogin.getUsername() == null || accountLogin.getPassword() == null) {
